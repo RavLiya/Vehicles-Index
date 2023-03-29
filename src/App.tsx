@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
+import NoteList from './components/NoteList';
+import { VehicleEntry } from './models/vehicleEntryModel';
 
 function App() {
+  const [vehicles, setVehicles] = useState<VehicleEntry[]>([{
+    id: "NCCBB1334",
+    make: "Nissan",
+    year: "2022",
+    color: "#dfdfdf",
+    date: (new Date).toString()
+  }]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header/>
+    <NoteList vehicles={vehicles} setVehicles={setVehicles}/>
+    </>
   );
 }
 
